@@ -9,7 +9,7 @@ const date = require(__dirname + "/date.js");
 const app = express();
 
 // set an array for the default items in the list
-let items = ["Buy Food", "Prepare Food", "Cook Food", "Eat Food", "Store Food"];
+let items = ["Buy Food", "Prepare Food", "Cook Food", "Eat Food", "Store Food", "Do College Homework"];
 // set an empty array for new work items
 let workItems = ["Show Up", "Get Settled"];
 
