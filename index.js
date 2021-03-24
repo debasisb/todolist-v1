@@ -11,16 +11,21 @@ const app = express();
 // set an array for the default items in the list
 let items = ["Buy Food", "Prepare Food", "Cook Food", "Eat Food"];
 // set an empty array for new work items
-let workItems = ["Show Up", "Get Settled"];
+let workItems = ["Show Up"];
+
+// set an empty array carries some fun items
+let funItems = ["Badminton", "Basketball", "Drink"];
+
+let weekendItems = ["Stay Home", "Sleep Till 12PM"];
 
 // set EJS as the viewing engine to display html
 app.set('view engine', 'ejs');
 
 // use body parser to parse html file
 app.use(bodyParser.urlencoded({extended: true}));
+
 // use Express to serve or display static files such as images, CSS, JS files etc.
 app.use(express.static("public"));
-
 
 // default html file in web server
 app.get("/", function(req, res) {
@@ -36,14 +41,26 @@ app.get("/", function(req, res) {
 // display default to do list on the default root folder
 app.post("/", function(req, res) {
     
-    
     // code allows items to be added to the regular list and work list
     let item = req.body.newItem;
     
+    // if route is /work, add to work list
     if (req.body.list === "Work") {
         workItems.push(item);
         res.redirect("/work");
-    } else {
+    } 
+    // else if route is /fun, add to fun list
+    else if(req.body.list === "Fun"){
+        funItems.push(item);
+        res.redirect("/fun");
+    }
+    //else if route is /weekend, add to weekend list
+    else if(req.body.list === "Weekend"){
+        weekendItems.push(item);
+        res.redirect("/weekend");
+    }
+    // else push the item to default page
+    else {
         items.push(item);
         res.redirect("/");
     }
@@ -51,9 +68,22 @@ app.post("/", function(req, res) {
 
 // display default to do list on the localhost:3000/work route!
 app.get("/work", function(req, res){
-    res.render("list", {listTitle: "Work To Do List", newListItems: workItems})
-});
 
+  let day = date.getDate();
+    res.render("list", {listTitle: "Work Items To-Do List", newListItems: workItems})
+});
+ 
+app.get("/fun", function(req, res){
+
+  let day = date.getDate();
+  res.render("list", {listTitle: "Fun To-Do List", newListItems: funItems})
+});
+app.get("/weekend", function(req, res){
+
+  let day = date.getDate();
+  res.render("list", {listTitle: "Weekend To-Do List", newListItems: weekendItems})
+
+});
 app.listen(3000, function() {
 console.log ("Server is running on port 3000")
 });
