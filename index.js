@@ -11,7 +11,7 @@ const app = express();
 // set an array for the default items in the list
 let items = ["Buy Food", "Prepare Food", "Cook Food", "Eat Food"];
 // set an empty array for new work items
-let workItems = ["Show Up"];
+let workItems = ["Show Up","Study"];
 // create new array for fun items
 let funItems = ["Watch TV", "Read a Book"];
 // set an empty array for new weekend items
