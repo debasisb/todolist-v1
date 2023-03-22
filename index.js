@@ -11,11 +11,11 @@ const app = express();
 // set an array for the default items in the list
 let items = ["Buy Food", "Prepare Food", "Cook Food", "Eat Food"];
 // set an empty array for new work items
-let workItems = ["Show Up"];
+let workItems = ["Show Up","Do Work","Clock Out"];
 // create new array for fun items
-let funItems = ["Watch TV", "Read a Book"];
+let funItems = ["Watch TV", "Read a Book","Play Video Games"];
 // set an empty array for new weekend items
-let weekendItems = ["Relax", "Watch TV"];
+let weekendItems = ["Relax", "Watch TV", "Sleep In"];
 
 // set EJS as the viewing engine to display html
 app.set('view engine', 'ejs');
